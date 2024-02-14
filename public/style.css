@@ -1,0 +1,131 @@
+html {
+    width: 60%;
+    height: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    font-size: 16px;
+    background-color: #FFFFFF;
+}
+body {
+    height: 100%;
+    min-height: 100%;
+    line-height: 1.75;
+    background-color: #FFFFFF;
+}
+h1 {
+    color: white;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 35px;
+    text-shadow: 2px 2px 4px black;
+    /* font-weight: bold; */
+}
+h2 {
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-shadow: 2px 2px 4px black;
+    font-weight: bold;
+}
+h3 {
+    color: crimson;
+    text-align: left;
+    font-size: 22px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+h4 {
+    color: black;
+    text-align: left;
+    font-size: 17px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+}
+table, th, td {
+    border: 1px solid lightgray;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    overflow: scroll;
+}
+.myDiv {
+    /* border: 2px outset black; */
+    background-color: crimson;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+a:link:hover {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    text-decoration: underline;
+    cursor: pointer;
+    cursor: hand;
+}
+input[type=submit], button {
+    cursor: pointer;
+    cursor: hand;
+}
+#logPanel{
+    width:100%;
+    overflow:scroll;
+    position:relative;
+    height: 600px;
+}
+#logImage{
+    display: block;
+    width: 200px;
+    height: auto;
+}
+
+#viewPanelSVG {
+    width: 800px;
+    height: auto;
+    display: block;
+    padding: 0px;
+}
+#viewPanel{
+    width: 900px;
+    overflow: scroll;
+    position: relative;
+    height: auto;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+#svgTable{
+    width: 800px;
+    height: auto;
+}
+/* #devEditAtt {
+  display: none;
+} */
+#mytable {
+  border-collapse: collapse;
+}
+@media(max-width: 1500px) {
+    html {
+        font-size: 14px !important;
+        width: 80% !important;
+    }
+}
+@media(max-width: 480px) {
+    html {
+        font-size: 12px !important;
+        width: 90% !important;
+    }
+}
+@media(max-width: 320px) {
+    html {
+        font-size: 12px !important;
+        width: 100% !important;
+    }
+}

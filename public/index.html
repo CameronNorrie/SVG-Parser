@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> SVG Image Viewer </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="CHANGE ME">
+    <meta name="keywords" content="SVG Editor">
+    <meta name="author" content="Cameron Norrie">
+    <!-- Load jquery, bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <!-- Custom CSS End -->
+</head>
+<body>
+    <hr>
+    <div class="myDiv">
+        <h1>
+            SVG Image Viewer
+        </h1>
+        <br>
+        <h2>
+            Welcome to the SVG Image Viwer! Containing 3 display panels: File Log, SVG View, and Addition Options 
+        </h2>
+    </div>
+    <hr>
+    <h3> File Log Panel </h3>
+    <div id="logPanel">
+        <table class = "tablelog" id="table">
+            <tr>
+                <th>Image (click to download)</th>
+                <th>File name (click to download)</th>
+                <th>File size</th>
+                <th>Number of rectangles</th>
+                <th>Number of circles</th>
+                <th>Number of paths</th>
+                <th>Number of groups</th>
+            </tr>
+        </table>
+    </div>
+
+    <form ref='uploadForm' id='uploadForm' action='/upload' method='post' encType="multipart/form-data">
+        <div class="form-group">
+      	    <input type="file" name="uploadFile" class="btn btn-secondary">
+      	    <input type='submit' value='Upload File' class="btn btn-secondary">
+        </div>
+    </form>
+    <br>
+    <h3> SVG View Panel </h3>
+    <select name="files" class="svgDropDown" id="svgDropDown">
+        <option selected="selected">None</option>
+    </select>
+    <label for="files">Please select a file to display its components.</label>
+    <div id="viewPanel">
+        <img class="center" id="viewPanelSVG" src="">
+        <table class = "table" id="svgTable">
+            <!-- <tr>
+                <th colspan="3"><img class="center" id="viewPanelSVG" src=""></th>
+            </tr> -->
+            <tr>
+                <th colspan="1">Title</th>
+                <th colspan="2">Description</th>
+            </tr>
+            <tr>
+                <th>Component</th>
+                <th>Summary</th>
+                <th>Other Attributes</th>
+            </tr>
+        </table>
+    </div>
+    <!-- <br> -->
+    <div id= "devEditTD">
+        <h4>Edit Title/Description </h4>
+        <form id="editTD">
+            <label class="control-label col-sm-2 col-form-label" id="editlbltitle" for="edittitle">Title:</label>
+            <input type="text" class="form-control" id="edittitle" placeholder="Enter Title" name="edittitle" required>
+        
+            <label class="control-label col-sm-2 col-form-label" id="editlbldesc" for="editdesc">Description:</label>
+            <input type="text" class="form-control" id="editdesc" placeholder="Enter Description" name="editdesc" required>
+            <br>
+            <button class="btn btn-dark mb-2" type="submit">Update</button>
+        </form>
+    </div>
+    <br>
+    <div id="createSVGimg">
+        <h3>Create SVG File</h3>
+        <form id="createSVG">
+          <div class="form-group row">
+            <label class="control-label col-sm-2 col-form-label" for="fileName">Filename:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="fileName" placeholder="Enter Filename" name="fileName" required>
+            </div>
+            <div class="input-group-text">.svg</div>
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-sm-2 col-form-label" for="title">Title:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title"></div>
+            </div>
+  
+            <div class="form-group row">
+                <label class="control-label col-sm-2 col-form-label" for="description">Description:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="description" placeholder="Enter Description" name="description">
+                </div>
+            </div>
+            <button class="btn btn-dark mb-2" type="submit">Create SVG</button>
+        </form>
+    </div>
+    <br>
+    <div id="Addshapes">
+        <h3>Add shapes</h3>
+        <div class="form-group row" id="shapes">
+          <form id="addShape">
+
+            <select name="drop2" class="dropdown2" id="dropdown2">
+              <option selected>None</option>
+            </select>
+
+            <select name="drop3" class="dropdown" id="selectShape">
+              <option selected>Rectangle</option>
+              <option >Circle</option>
+            </select>
+            <br>
+            <label class="control-label col-sm-2 col-form-label" id="lblxID" for="x">X:</label>
+            <input type="number" class="form-control" id="xID" placeholder="Enter x coordinate" name="x" required>
+
+            <label class="control-label col-sm-2 col-form-label" id="lblyID" for="y">Y:</label>
+            <input type="number" class="form-control" id="yID" placeholder="Enter y coordinate" name="y" required>
+
+            <label class="control-label col-sm-2 col-form-label" id="lblrwID" for="r">Width:</label>
+            <input type="number" class="form-control" id="rwID" placeholder="Enter Width" name="r" required>
+
+            <label class="control-label col-sm-2 col-form-label" id="lblheight" for="height">Height:</label>
+            <input type="number" class="form-control" id="height" placeholder="Enter height" name="height" required>
+
+            <label class="control-label col-sm-2 col-form-label" id="lblunitsID" for="units">Units:</label>
+            <input type="text" class="form-control" id="unitsID" placeholder="Enter units" name="units" >
+            <button class="btn btn-dark mb-2" type="submit">Add Shape</button>
+
+          </form>
+        </div>
+
+    <!-- Leave me at the bottom of body -->
+    <script src="/index.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
